@@ -1,5 +1,5 @@
 /* Genetic mixed-orientation layer packing: gene 0 = normal, 1 = rotated 90°. */
-let currentPlan,sceneDrag,gaRunning=false,gaCancel=false,gaRunId=0,selectedBoxId=null,selectedSku=null;
+let currentPlan,sceneDrag,gaRunning=false,gaCancel=false,gaRunId=0,selectedBoxId=null,selectedSku=null,solutionHistory=[],historyIndex=-1;
 let productRows=[{sku:'Kutu A',qty:12,w:400,d:300,h:240,mass:8}];
 function setupStabilityMetrics(){let note=document.querySelector('.note');note.insertAdjacentHTML('beforebegin','<div id="stability-metrics" style="display:none"><div class="metric"><span>Ağırlık merkezi X / Y</span><b id="com-xy">—</b></div><div class="metric"><span>Ağırlık merkezi yüksekliği</span><b id="com-z">—</b></div><div class="metric"><span>Ortalama destek</span><b id="support-score">—</b></div><div class="metric"><span>Ön stabilite skoru</span><b id="stability-score">—</b></div><div class="metric"><span>SKU geçişi (robot sırası)</span><b id="sku-transitions">—</b></div><div class="metric"><span>SKU küme skoru</span><b id="sku-cluster-score">—</b></div></div>')}
 function analyzeLoad(v){let boxes=v.boxes3d||[],mass=boxes.reduce((n,q)=>n+q.mass,0);if(!mass)return null;let c=boxes.reduce((a,q)=>({x:a.x+q.mass*(q.x+q.w/2-v.pw/2),y:a.y+q.mass*(q.y+q.d/2-v.pd/2),z:a.z+q.mass*(q.z+q.h/2)}),{x:0,y:0,z:0}),x=c.x/mass,y=c.y/mass,z=c.z/mass,offset=Math.hypot(x,y),maxOffset=Math.hypot(v.pw/2,v.pd/2),support=boxes.reduce((n,q)=>n+(q.support??1),0)/boxes.length,score=Math.max(0,Math.min(100,100*(.5*(1-offset/maxOffset)+.25*(1-z/v.mh)+.25*support)));return{mass,x,y,z,offset,support,score}}
@@ -35,6 +35,15 @@ function setupGaProgress(){
   $('run').insertAdjacentElement('afterend',panel);$('ga-cancel').onclick=()=>{gaCancel=true;$('ga-label').textContent='İPTAL EDİLİYOR…'};
 }
 function showGaProgress(percent,generation){$('ga-progress').style.display='block';$('ga-label').textContent='GENETİK ARAMA · '+percent+'% · NESİL '+generation;$('ga-bar').style.width=percent+'%'}
+function solutionHistoryKey(pw,pd,mh,products){return JSON.stringify({pw,pd,mh,products})}
+function readSolutionStore(){try{return JSON.parse(localStorage.getItem('palletforge-solutions-v1')||'{}')}catch{return{}}}
+function writeSolutionStore(store){try{localStorage.setItem('palletforge-solutions-v1',JSON.stringify(store));return true}catch{return false}}
+function setupSolutionHistory(){let panel=document.createElement('div');panel.id='solution-history';panel.style.cssText='display:none;margin-top:10px;padding:10px;border:1px solid #dce2e5;border-radius:8px;background:#f7faf9;font:10px "DM Mono";color:#59666d';panel.innerHTML='<div style="display:flex;justify-content:space-between;margin-bottom:7px"><span>ÇÖZÜM GEÇMİŞİ</span><b id="history-label">—</b></div><div id="history-summary" style="line-height:1.5;margin-bottom:8px"></div><div style="display:flex;gap:5px"><button id="history-prev" type="button" style="flex:1;border:1px solid #dce2e5;background:#fff;border-radius:5px;padding:6px;font:9px DM Mono;cursor:pointer">← ÖNCEKİ</button><button id="history-best" type="button" style="flex:1;border:1px solid #172025;background:#172025;color:#fff;border-radius:5px;padding:6px;font:9px DM Mono;cursor:pointer">EN İYİ</button><button id="history-next" type="button" style="flex:1;border:1px solid #dce2e5;background:#fff;border-radius:5px;padding:6px;font:9px DM Mono;cursor:pointer">SONRAKİ →</button><button id="history-clear" type="button" style="border:1px solid #f1c6b5;background:#fff;color:#b04a27;border-radius:5px;padding:6px;font:9px DM Mono;cursor:pointer">×</button></div>';$('ga-progress').insertAdjacentElement('afterend',panel);$('history-prev').onclick=()=>selectHistory(historyIndex-1);$('history-next').onclick=()=>selectHistory(historyIndex+1);$('history-best').onclick=()=>selectHistory(0);$('history-clear').onclick=()=>clearSolutionHistory()}
+function updateHistoryPanel(){let panel=$('solution-history');if(!solutionHistory.length){panel.style.display='none';return}let entry=solutionHistory[historyIndex];panel.style.display='block';$('history-label').textContent=(historyIndex+1)+' / '+solutionHistory.length;$('history-summary').textContent=entry.plan.boxes3d.length+'/'+entry.plan.requested+' adet · COM '+entry.load.offset.toFixed(0)+' mm · '+entry.load.z.toFixed(0)+' mm · '+entry.flow.transitions+' SKU geçişi';$('history-prev').disabled=historyIndex<=0;$('history-next').disabled=historyIndex>=solutionHistory.length-1}
+function loadSolutionHistory(key){let store=readSolutionStore();solutionHistory=store[key]||[];historyIndex=solutionHistory.length?0:-1;updateHistoryPanel()}
+function saveSolutionHistory(key,plan,score){let load=analyzeLoad(plan)||{offset:0,z:0},flow=plan.skuFlow||analyzeSkuFlow(plan.boxes3d,plan.pw,plan.pd),entry={id:Date.now()+Math.random(),score,load,flow,plan:JSON.parse(JSON.stringify(plan))},store=readSolutionStore(),list=(store[key]||[]);list.push(entry);list.sort((a,b)=>b.score-a.score);let kept=list.slice(0,12);if(!kept.some(x=>x.id===entry.id)){kept=kept.slice(0,11).concat(entry).sort((a,b)=>b.score-a.score)}store[key]=kept;solutionHistory=kept;historyIndex=solutionHistory.findIndex(x=>x.id===entry.id);if(!writeSolutionStore(store))$('status').textContent='GEÇMİŞ KAYDEDİLEMEDİ';updateHistoryPanel()}
+function selectHistory(index){if(index<0||index>=solutionHistory.length)return;historyIndex=index;currentPlan=JSON.parse(JSON.stringify(solutionHistory[index].plan));selectedBoxId=null;selectedSku=null;render(currentPlan);updateHistoryPanel()}
+function clearSolutionHistory(){if(!currentPlan)return;let key=solutionHistoryKey(currentPlan.pw,currentPlan.pd,currentPlan.mh,currentPlan.products),store=readSolutionStore();delete store[key];writeSolutionStore(store);solutionHistory=[];historyIndex=-1;updateHistoryPanel()}
 let threeView,orbit={azimuth:-.75,elevation:.62,distance:22},threeDrag;
 function initThree(){
   if(threeView||!window.THREE)return !!threeView;let host=$('scene');host.replaceWith(Object.assign(document.createElement('div'),{id:'scene',className:'scene'}));host=$('scene');
@@ -104,8 +113,9 @@ async function solve(){
   if(gaRunning)gaCancel=true;
   let pw=+$('pw').value,pd=+$('ph').value,mh=+$('maxh').value,products=getProducts();if(!pw||!pd||!mh||!products.length){$('status').textContent='LİSTEYİ KONTROL EDİN';return}let runId=++gaRunId;
   if(mode==='genetic'){
-    gaRunning=true;gaCancel=false;$('run').disabled=true;$('status').textContent='GENETİK ARAMA';let result=await geneticMultiSku(products,pw,pd,mh,runId);gaRunning=false;$('run').disabled=false;$('ga-progress').style.display='none';if(!result)return;
+    let historyKey=solutionHistoryKey(pw,pd,mh,products);loadSolutionHistory(historyKey);gaRunning=true;gaCancel=false;$('run').disabled=true;$('status').textContent='GENETİK ARAMA';let result=await geneticMultiSku(products,pw,pd,mh,runId);gaRunning=false;$('run').disabled=false;$('ga-progress').style.display='none';if(!result)return;
     currentPlan={pw,pd,mh,products,boxes3d:result.boxes,requested:products.reduce((n,p)=>n+p.qty,0),boxes:[],layers:0,algorithm:'GA',skuFlow:result.flow};
+    saveSolutionHistory(historyKey,currentPlan,result.score);
   }else currentPlan={pw,pd,mh,products,boxes3d:packProductList(products,pw,pd,mh),requested:products.reduce((n,p)=>n+p.qty,0),boxes:[],layers:0,algorithm:'deterministic'};
   if(runId===gaRunId)render(currentPlan);
 }
@@ -122,6 +132,7 @@ setupResizableLayout();
 setupProductList();
 setupStabilityMetrics();
 setupGaProgress();
+setupSolutionHistory();
 solve();
 $('run').onclick=solve;
 document.querySelectorAll('input').forEach(e=>e.onchange=solve);
