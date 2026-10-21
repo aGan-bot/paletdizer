@@ -10,7 +10,7 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 - CSV ve JSON içe aktarma
 - Hazır rastgele örnek set üretimi
 - Ağır kutuları önceleyen 3B temas-noktası yerleştiricisi
-- Çoklu SKU için ağırlık bantlı genetik arama: ortalama üstü/aşağısı kutular ayrı kromozom bölmelerinde sıralanır; sıra ve 0°/90° yön genleri aranır
+- Çoklu SKU için katman bazlı genetik arama: her seviyede ağır kutulardan `%150` taban alanı büyüklüğünde aday havuzu seçilir; sıra ve 0°/90° yön genleri aranır
 - Palet sınırı ve kutu çakışması denetimi
 - Üstteki kutular için en az %75 destek yüzeyi kontrolü
 - 110 mm yüksekliğinde 3B ahşap palet görünümü

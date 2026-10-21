@@ -12,7 +12,7 @@ Bu not, PalletForge/Paletdizer çalışmasının kaldığı yeri ve sonraki uygu
 - Üstteki bir kutu için alttaki destek alanının en az `%75` olması istenir.
 - Three.js sahnesi kutuları gerçek `x, y, z, genişlik, derinlik, yükseklik` değerleriyle çizer.
 - Palet 110 mm yüksekliğinde, ahşap tabla ve takozlardan oluşan 3B bir modeldir.
-- Çoklu SKU genetik optimizasyonu bağlandı: ağırlık ortalamasına göre ağır ve hafif kutular ayrı kromozom bölmelerinde tutulur. Her bölmede sıra için OX çaprazlama, kutu başına 0°/90° yön geni için mutasyon uygulanır.
+- Çoklu SKU genetik optimizasyonu bağlandı: her fiziksel seviyede kalan kutular ağırlığa göre sıralanır; palet taban alanının `%150`si kadar aday havuzu seçilir. GA bu havuzun sıra ve 0°/90° yön kararlarını arar; yerleşmeyen kutular sonraki seviyede yeniden değerlendirilir.
 
 ## Hedefler
 
@@ -60,9 +60,9 @@ Durum: Başlandı.
 
 Durum: Başlandı.
 
-- [x] Ağırlık ortalamasına göre ağır/hafif kromozom bölmeleri
-- [x] Ağır grup önce çözümlenerek alt bölgelere öncelik verilir
-- [x] Bölme içi sıra için OX çaprazlama ve swap mutasyonu
+- [x] Katman/seviye başına ağırlık sıralı `%150` taban alanı aday havuzu
+- [x] Yerleşmeyen adayların sonraki seviyede yeniden değerlendirilmesi
+- [x] Sıra için OX çaprazlama ve swap mutasyonu
 - [x] Kutu başına 0°/90° yön geni ve yön mutasyonu
 - [x] Yerleşen adet, hacim, COM, destek ve ağır/hafif ortalama yüksekliğiyle uygunluk puanı
 - [ ] Kromozoma temas noktası tercihi eklenmesi
