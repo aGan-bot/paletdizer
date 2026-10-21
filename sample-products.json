@@ -1,0 +1,10 @@
+[
+  { "sku": "SKU-01", "adet": 4, "en": 300, "boy": 250, "yukseklik": 200, "agirlik": 9 },
+  { "sku": "SKU-02", "adet": 3, "en": 400, "boy": 300, "yukseklik": 240, "agirlik": 14 },
+  { "sku": "SKU-03", "adet": 5, "en": 250, "boy": 200, "yukseklik": 180, "agirlik": 6 },
+  { "sku": "SKU-04", "adet": 2, "en": 500, "boy": 350, "yukseklik": 280, "agirlik": 18 },
+  { "sku": "SKU-05", "adet": 6, "en": 200, "boy": 200, "yukseklik": 150, "agirlik": 4 },
+  { "sku": "SKU-06", "adet": 3, "en": 350, "boy": 250, "yukseklik": 220, "agirlik": 11 },
+  { "sku": "SKU-07", "adet": 2, "en": 450, "boy": 300, "yukseklik": 260, "agirlik": 16 },
+  { "sku": "SKU-08", "adet": 4, "en": 300, "boy": 200, "yukseklik": 200, "agirlik": 7 }
+]
