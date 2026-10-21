@@ -12,7 +12,7 @@ Bu not, PalletForge/Paletdizer çalışmasının kaldığı yeri ve sonraki uygu
 - Üstteki bir kutu için alttaki destek alanının en az `%75` olması istenir.
 - Three.js sahnesi kutuları gerçek `x, y, z, genişlik, derinlik, yükseklik` değerleriyle çizer.
 - Palet 110 mm yüksekliğinde, ahşap tabla ve takozlardan oluşan 3B bir modeldir.
-- Mevcut 3B yerleştirici henüz deterministiktir; çoklu SKU genetik optimizasyonu henüz bağlanmadı.
+- Çoklu SKU genetik optimizasyonu bağlandı: ağırlık ortalamasına göre ağır ve hafif kutular ayrı kromozom bölmelerinde tutulur. Her bölmede sıra için OX çaprazlama, kutu başına 0°/90° yön geni için mutasyon uygulanır.
 
 ## Hedefler
 
@@ -57,6 +57,16 @@ Durum: Başlandı.
 - Ağır kutunun üstte kalması için ceza veya kural uygulanacak.
 
 ### Faz 3 — Çok amaçlı genetik algoritma
+
+Durum: Başlandı.
+
+- [x] Ağırlık ortalamasına göre ağır/hafif kromozom bölmeleri
+- [x] Ağır grup önce çözümlenerek alt bölgelere öncelik verilir
+- [x] Bölme içi sıra için OX çaprazlama ve swap mutasyonu
+- [x] Kutu başına 0°/90° yön geni ve yön mutasyonu
+- [x] Yerleşen adet, hacim, COM, destek ve ağır/hafif ortalama yüksekliğiyle uygunluk puanı
+- [ ] Kromozoma temas noktası tercihi eklenmesi
+- [ ] Çok amaçlı Pareto sıralaması (NSGA-II)
 
 Önerilen kromozom:
 

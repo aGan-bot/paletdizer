@@ -10,10 +10,12 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 - CSV ve JSON içe aktarma
 - Hazır rastgele örnek set üretimi
 - Ağır kutuları önceleyen 3B temas-noktası yerleştiricisi
+- Çoklu SKU için ağırlık bantlı genetik arama: ortalama üstü/aşağısı kutular ayrı kromozom bölmelerinde sıralanır; sıra ve 0°/90° yön genleri aranır
 - Palet sınırı ve kutu çakışması denetimi
 - Üstteki kutular için en az %75 destek yüzeyi kontrolü
 - 110 mm yüksekliğinde 3B ahşap palet görünümü
 - Three.js ile kamera döndürme ve ağırlık merkezine odaklı yakınlaştırma
+- 3B kutuya tıklayınca SKU, ölçü, ağırlık, yön ve palet konumu bilgisi
 - Doluluk, toplam yük, ağırlık merkezi, destek oranı ve ön stabilite skoru
 - Ağırlık merkezi için `±X`, `±Y`, `±Z` eksen göstergesi
 
@@ -62,7 +64,7 @@ Detaylı çalışma planı: [MULTI_SKU_ROADMAP.md](MULTI_SKU_ROADMAP.md)
 Sıradaki önemli aşamalar:
 
 1. Ağır/kırılgan ürün ve üst yük kuralları
-2. Çok amaçlı genetik algoritma: yerleştirme sırası, yönelim ve temas noktası seçimi
+2. GA'ya temas noktası tercihi ve daha ayrıntılı çok amaçlı Pareto seçimi eklenmesi
 3. Yerel arama ve performans iyileştirmeleri
 4. Robot alma-bırakma pozları, ters kinematik ve çarpışma denetimi
 
