@@ -36,7 +36,8 @@ Durum: Başlandı.
 - [x] En az %75 destek alanı kontrolü
 - [ ] Kırılganlık, izinli yönelim ve üst yük limiti alanları
 - [x] CSV/JSON içe aktarma ve örnek veri seti
-- [ ] Dışa aktarma: JSON ve CSV
+- [x] Çözüm dışa aktarma: robot sırası ve koordinatlarıyla JSON
+- [ ] Çözüm dışa aktarma: CSV
 
 ### Faz 2 — Stabilite ve ağırlık merkezi
 

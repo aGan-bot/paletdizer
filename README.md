@@ -8,6 +8,7 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 - SKU, adet, en, boy, yükseklik ve ağırlık (kg) girişi
 - Pozitif tam sayı doğrulaması
 - CSV ve JSON içe aktarma
+- Seçili çözümü robot yerleştirme sırası ve koordinatlarıyla JSON dışa aktarma
 - Hazır rastgele örnek set üretimi
 - Ağır kutuları önceleyen 3B temas-noktası yerleştiricisi
 - Çoklu SKU için katman bazlı genetik arama: her seviyede ağır kutulardan `%150` taban alanı büyüklüğünde aday havuzu seçilir; sıra ve 0°/90° yön genleri aranır
