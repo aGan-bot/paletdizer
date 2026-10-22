@@ -11,6 +11,7 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 - Seçili çözümü robot yerleştirme sırası ve koordinatlarıyla JSON dışa aktarma
 - Hazır rastgele örnek set üretimi
 - Ağır kutuları önceleyen 3B temas-noktası yerleştiricisi
+- Tek SKU için en yüksek kapasiteli ana katman ve çift katlarda X ekseninde ayna düzeni
 - Çoklu SKU için katman bazlı genetik arama: her seviyede ağır kutulardan `%150` taban alanı büyüklüğünde aday havuzu seçilir; sıra ve 0°/90° yön genleri aranır
 - Palet sınırı ve kutu çakışması denetimi
 - Üstteki kutular için en az %75 destek yüzeyi kontrolü

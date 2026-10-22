@@ -4,6 +4,7 @@ Bu not, PalletForge/Paletdizer çalışmasının kaldığı yeri ve sonraki uygu
 
 ## Mevcut durum
 
+- Tek SKU siparişlerinde ilk/tek kat için en yüksek kapasiteli düzen; çift katlar için X ekseninde ayna düzeni üretilir.
 - Tek tip kutu için geliştirilen ilk yerleştirici, çoklu SKU veri girişiyle genişletilmeye başlandı.
 - Arayüzde en fazla 30 kutu türü tanımlanabilir.
 - Her satırda `SKU`, `adet`, `en`, `boy`, `yükseklik` ve `ağırlık (kg)` bulunur.
