@@ -1,0 +1,24 @@
+{
+  "revision": "0c508662600b9da1cf9056a6860ff39357240db0",
+  "sourceSha256": "df4d929330118f8505a3c3aee6cb65c98bc73d129c39a73a856289a4805ab498",
+  "runtime": "v22.23.4",
+  "startedAt": "2026-10-27T08:16:51.654Z",
+  "pallet": {
+    "pw": 1200,
+    "pd": 800,
+    "mh": 1000
+  },
+  "ga": {
+    "population": 30,
+    "generations": 30,
+    "runsPerOrder": 10
+  },
+  "randomness": "Unmodified Math.random; no fixed seed",
+  "timing": "Algorithm only, excludes rendering, file export and validation",
+  "orders": {
+    "01-direction.json": "b0a9070d49323a2c4aca0d96f08ffcdbd90c0d36c49d735428171ccc297e00d8",
+    "02-support.json": "3273dc3969f7f454e1b58e29f07346f0ed3a1892666fa13fe095af26427ec1a1",
+    "03-capacity.json": "6f64aa6ff7c81bc5b6b4523fb564d8956c5b26454fa6fc11ff0aba039908ab1b"
+  },
+  "completedAt": "2026-10-27T08:20:03.823Z"
+}

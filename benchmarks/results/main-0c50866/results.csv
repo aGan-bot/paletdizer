@@ -1,0 +1,2 @@
+revision,scenario,mode,run,placed,requested,utilization_percent,com_offset_mm,com_height_mm,average_support_percent,sku_transitions,duration_seconds,valid,plan_file
+0c508662600b9da1cf9056a6860ff39357240db0,01-direction,analytic,1,24,24,55,11.302548385209418,330.77,97.57,4,0.015942332,true,01-direction-analytic-01.json

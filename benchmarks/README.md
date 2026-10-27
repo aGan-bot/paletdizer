@@ -27,4 +27,16 @@ revision,scenario,mode,run,placed,requested,utilization_percent,com_offset_mm,co
 
 Her sürüm ve senaryo için 10 GA koşusunun en iyi, medyan ve en kötü yerleşen adetlerini; denge metriklerini ve medyan süreyi karşılaştırın. Tek bir şanslı koşuya göre karar vermeyin. Sınır/çakışma/%75 destek ihlali olan sonuçları geçerli kazanım saymayın; dışa aktarılan koordinatların bağımsız doğrulaması henüz eklenmediği için `valid` alanını doğrulama yapılana kadar `unchecked` bırakın.
 
-Mevcut GA `Math.random()` kullanır; sabit sipariş aynı sonucu garanti etmez. Bu ilk aşama aynı girdilerle tekrarlı karşılaştırma sağlar. Birebir tekrarlanabilir otomatik benchmark için sonraki adım, her iki sürüme ortak seed'li rastgelelik ve plan doğrulayıcısı eklemektir. Bu veri setinde henüz ölçülmüş referans sonuç yoktur.
+Mevcut GA `Math.random()` kullanır; sabit sipariş aynı sonucu garanti etmez. Bu ilk aşama aynı girdilerle tekrarlı karşılaştırma sağlar. Birebir tekrarlanabilir otomatik benchmark için sonraki adım, her iki sürüme ortak seed'li rastgelelik eklemektir.
+
+## Otomatik çalıştırma
+
+`run.cjs`, `dist/optimizer.js` içindeki mevcut fonksiyonları Node.js VM ortamında yükler. Yalnızca DOM başlangıcını çalıştırmaz, ilerleme göstergesini devre dışı bırakır ve animasyon beklemesini Node olay döngüsüne bağlar. Yerleştirme, GA parametreleri, rastgelelik ve uygulamanın JSON dışa aktarıcısı değiştirilmez. Üç sipariş için toplam 33 koşu sırayla çalışır.
+
+```bash
+node benchmarks/run.cjs benchmarks/results/YENI-KOSU-KLASORU REFERANS_COMMIT
+```
+
+Çıktı klasörü yeni olmalıdır; önceki sonuçların üzerine yazılmaz. Her koşunun uygulamayla aynı şemadaki JSON planına benchmark bilgileri eklenir. `results.csv` metrikleri, `manifest.json` commit ve kaynak/girdi SHA-256 değerlerini içerir. Süre yalnızca algoritmayı kapsar; arayüz çizimini içermez. Bağımsız doğrulayıcı sınır, çakışma, destek, ürün ölçüleri ve adetlerini kontrol eder; hata bulursa koşuları durdurur. Bu geometrik doğrulama gerçek dünya dayanım veya robot güvenliği doğrulaması değildir.
+
+Referans algoritma commit'i: `0c508662600b9da1cf9056a6860ff39357240db0`. Tam referans sonuçları `results/main-0c50866-complete/` altında tutulur. `results/main-0c50866/` ilk çalıştırıcı denemesinin yalnızca analitik çıktısını içerir ve karşılaştırmaya dahil edilmez.
