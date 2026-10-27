@@ -91,9 +91,14 @@ function tetrisPack(genes,pw,pd,bw,bd){
 function buildInstances(products){let queue=[];products.forEach((p,type)=>{for(let i=0;i<p.qty&&queue.length<180;i++)queue.push({...p,type,id:queue.length})});return queue}
 function layerCandidatePool(remaining,pw,pd){let cap=pw*pd*1.5,area=0,sorted=remaining.slice().sort((a,b)=>b.item.mass-a.item.mass||a.rank-b.rank),pool=[];for(let gene of sorted){if(area>=cap&&pool.length>=4)break;pool.push(gene);area+=gene.item.w*gene.item.d}return pool.sort((a,b)=>a.rank-b.rank)}
 // Missing preference preserves the baseline decoder (including analytic mode).
-// 0 fills along X (Y first); 1 fills along Y (X first), at every level.
+// 0 fills along X; 1 fills along Y. Upper levels prioritize center and support.
 function preferPlacement(candidate,best,z,preference){
   if(!best)return true;
+  if(z>0){
+    if(candidate.centerOffset!==best.centerOffset)return candidate.centerOffset<best.centerOffset;
+    if(candidate.support!==best.support)return candidate.support>best.support;
+    if(preference===undefined)return false;
+  }
   if(preference===0)return candidate.y<best.y||candidate.y===best.y&&candidate.x<best.x;
   if(preference===1)return candidate.x<best.x||candidate.x===best.x&&candidate.y<best.y;
   return z>0?(candidate.centerOffset<best.centerOffset||candidate.centerOffset===best.centerOffset&&candidate.support>best.support):(candidate.y<best.y||candidate.y===best.y&&candidate.x<best.x);

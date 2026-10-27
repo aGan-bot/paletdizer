@@ -9,7 +9,13 @@ vm.runInContext(`
   const y={x:0,y:400,centerOffset:10,support:1};
   assert.equal(preferPlacement(x,y,0,0),true);
   assert.equal(preferPlacement(x,y,0,1),false);
-  assert.equal(preferPlacement(x,y,200,0),true);
+  assert.equal(preferPlacement(x,y,200,0),false);
+  assert.equal(preferPlacement(x,y,200,1),false);
+  const tie={...x,centerOffset:y.centerOffset};
+  assert.equal(preferPlacement(tie,y,200,0),true);
+  assert.equal(preferPlacement(tie,y,200,1),false);
+  assert.equal(preferPlacement({...tie,support:.75},y,200,0),false);
+  assert.equal(preferPlacement(tie,y,200,undefined),false);
   assert.equal(preferPlacement(x,y,200,undefined),false);
   const items=[{id:0,sku:'A',w:400,d:300,h:200,mass:5},{id:1,sku:'A',w:400,d:300,h:200,mass:5}];
   for(let i=0;i<30;i++)assert.ok(makeChromosome(items).genes.every(g=>g.placement===0||g.placement===1));
