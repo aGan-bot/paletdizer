@@ -1,0 +1,646 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-27T08:26:19.015Z",
+  "algorithm": "GA",
+  "pattern": null,
+  "coordinateSystem": {
+    "unit": "mm",
+    "origin": "Palet tablasının sol-alt köşesi",
+    "x": "+X palet eni",
+    "y": "+Y palet boyu",
+    "z": "+Z palet tabla üstü",
+    "palletHeightMm": 110
+  },
+  "pallet": {
+    "widthMm": 1200,
+    "depthMm": 800,
+    "maxLoadHeightMm": 1000
+  },
+  "summary": {
+    "requestedBoxes": 24,
+    "placedBoxes": 24,
+    "unplacedBoxes": 0,
+    "utilizationPercent": 55,
+    "centerOfMassMm": {
+      "x": -14.18,
+      "y": 6.97,
+      "z": 311.54
+    },
+    "averageSupportPercent": 100,
+    "skuTransitions": 6,
+    "skuClusterScore": 77
+  },
+  "placements": [
+    {
+      "sequence": 1,
+      "sku": "DIR-A",
+      "boxId": 1,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 150,
+        "z": 100
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 2,
+      "sku": "DIR-A",
+      "boxId": 2,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 500,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 650,
+        "y": 250,
+        "z": 100
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 3,
+      "sku": "DIR-A",
+      "boxId": 3,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 500,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 800,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 950,
+        "y": 250,
+        "z": 100
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 4,
+      "sku": "DIR-A",
+      "boxId": 4,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 500,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 300,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 550,
+        "z": 100
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 5,
+      "sku": "DIR-A",
+      "boxId": 5,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 500,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 550,
+        "y": 650,
+        "z": 100
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 6,
+      "sku": "DIR-B",
+      "boxId": 9,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 800,
+        "y": 500,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 1000,
+        "y": 650,
+        "z": 100
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 7,
+      "sku": "DIR-A",
+      "boxId": 6,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 500,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 650,
+        "y": 250,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 8,
+      "sku": "DIR-A",
+      "boxId": 7,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 500,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 550,
+        "y": 650,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 9,
+      "sku": "DIR-A",
+      "boxId": 8,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 500,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 800,
+        "y": 0,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 950,
+        "y": 250,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 10,
+      "sku": "DIR-B",
+      "boxId": 10,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 200,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 11,
+      "sku": "DIR-B",
+      "boxId": 11,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 800,
+        "y": 500,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 1000,
+        "y": 650,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 12,
+      "sku": "DIR-B",
+      "boxId": 12,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 400,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 600,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 13,
+      "sku": "DIR-C",
+      "boxId": 17,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 0,
+        "z": 200
+      },
+      "centerMm": {
+        "x": 400,
+        "y": 150,
+        "z": 300
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 14,
+      "sku": "DIR-B",
+      "boxId": 13,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 300,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 700,
+        "y": 450,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 15,
+      "sku": "DIR-B",
+      "boxId": 14,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 700,
+        "y": 150,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 16,
+      "sku": "DIR-B",
+      "boxId": 15,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 200,
+        "y": 150,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 17,
+      "sku": "DIR-B",
+      "boxId": 16,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 9,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 300,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 500,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 18,
+      "sku": "DIR-C",
+      "boxId": 18,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 600,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 650,
+        "y": 700,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 19,
+      "sku": "DIR-C",
+      "boxId": 21,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 500,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 400,
+        "y": 650,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 20,
+      "sku": "DIR-C",
+      "boxId": 20,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 900,
+        "y": 300,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 1000,
+        "y": 450,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 21,
+      "sku": "DIR-C",
+      "boxId": 19,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 800,
+        "y": 600,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 950,
+        "y": 700,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 22,
+      "sku": "DIR-C",
+      "boxId": 22,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 900,
+        "y": 0,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 1000,
+        "y": 150,
+        "z": 500
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 23,
+      "sku": "DIR-C",
+      "boxId": 23,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 300,
+        "z": 600
+      },
+      "centerMm": {
+        "x": 600,
+        "y": 450,
+        "z": 700
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 24,
+      "sku": "DIR-C",
+      "boxId": 24,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 700,
+        "y": 300,
+        "z": 600
+      },
+      "centerMm": {
+        "x": 800,
+        "y": 450,
+        "z": 700
+      },
+      "supportRatio": 1
+    }
+  ],
+  "benchmark": {
+    "revision": "2925e091b925daafb98988f225c01be7532dca51",
+    "scenario": "01-direction",
+    "mode": "ga",
+    "run": 3,
+    "durationSeconds": 7.664938442,
+    "validation": {
+      "valid": true,
+      "errors": []
+    }
+  }
+}

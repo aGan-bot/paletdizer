@@ -40,3 +40,13 @@ node benchmarks/run.cjs benchmarks/results/YENI-KOSU-KLASORU REFERANS_COMMIT
 Çıktı klasörü yeni olmalıdır; önceki sonuçların üzerine yazılmaz. Her koşunun uygulamayla aynı şemadaki JSON planına benchmark bilgileri eklenir. `results.csv` metrikleri, `manifest.json` commit ve kaynak/girdi SHA-256 değerlerini içerir. Süre yalnızca algoritmayı kapsar; arayüz çizimini içermez. Bağımsız doğrulayıcı sınır, çakışma, destek, ürün ölçüleri ve adetlerini kontrol eder; hata bulursa koşuları durdurur. Bu geometrik doğrulama gerçek dünya dayanım veya robot güvenliği doğrulaması değildir.
 
 Referans algoritma commit'i: `0c508662600b9da1cf9056a6860ff39357240db0`. Tam referans sonuçları `results/main-0c50866-complete/` altında tutulur. `results/main-0c50866/` ilk çalıştırıcı denemesinin yalnızca analitik çıktısını içerir ve karşılaştırmaya dahil edilmez.
+
+## Temas tercihi deneyi
+
+Dal: `experiment/placement-preference`; algoritma commit'i: `2925e091b925daafb98988f225c01be7532dca51`.
+
+Çoklu SKU GA'sında her kutunun `placement` geni `0` (önce küçük Y, ardından küçük X: X boyunca doldur) veya `1` (önce küçük X, ardından küçük Y: Y boyunca doldur) değerini taşır. Tercih tüm seviyelerde geçerli adayların karşılaştırılmasını değiştirir; kesin bir yüzeye temas zorunluluğu getirmez. 0°/90° yön denemeleri, sınır, çakışma, destek, uygunluk puanı, popülasyon ve nesil sayıları korunmuştur. Yeni gen %5,5 olasılıkla terslenir; OX çaprazlaması kutuyla birlikte yön ve tercih genini taşır.
+
+Başlangıç popülasyonundaki deterministik bireyin tercih geni yoktur; bu birey ve henüz tercih mutasyonu almamış genleri eski davranışı korur (tabanda X boyunca, üstte merkeze yakın). Dolayısıyla deney, eski davranışın yanında X/Y alternatifleri sunar. Analitik mod ve tek SKU yolu değişmemiştir. Üst seviyelerdeki yeni X/Y tercihleri merkeze yakınlık önceliğini kaldırabildiğinden ağırlık merkezi sonuçlarını ayrıca karşılaştırmak gerekir.
+
+`node benchmarks/check-preference.cjs` yön seçimi, eski davranışa dönüş, çaprazlama ve mutasyon kontrollerini çalıştırır. Aynı benchmark çalıştırıcısının 33 deney çıktısı `results/preference-2925e09/` altındadır. Sabit değerlendirme sayısı kullanılır; süre bütçesi eşitlenmez. Seed kullanılmadığından referansla birebir eşlenmiş rastgele deney değildir.
