@@ -1,0 +1,5 @@
+[
+  { "sku": "DIR-A", "adet": 8, "en": 500, "boy": 300, "yukseklik": 200, "agirlik": 12 },
+  { "sku": "DIR-B", "adet": 8, "en": 400, "boy": 300, "yukseklik": 200, "agirlik": 9 },
+  { "sku": "DIR-C", "adet": 8, "en": 300, "boy": 200, "yukseklik": 200, "agirlik": 5 }
+]

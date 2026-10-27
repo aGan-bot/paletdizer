@@ -58,6 +58,8 @@ MULTI_SKU_ROADMAP.md        Geliştirme fazları ve hedefleri
 
 ## Veri dosyası biçimi
 
+Mevcut algoritma ve deneysel yerleştirme tercihlerini aynı girdilerle karşılaştırmak için [sabit örnek siparişler ve deneme prosedürü](benchmarks/README.md) kullanılabilir.
+
 Örnekler:
 
 - [CSV örneği](sample-products.csv)

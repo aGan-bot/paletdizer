@@ -144,7 +144,8 @@ setupPlanExport();
 setupManualMoveControls();
 solve();
 $('run').onclick=solve;
-document.querySelectorAll('input').forEach(e=>e.onchange=solve);
+// Keep the file input's import handler; product rows handle their own edits.
+['pw','ph','maxh'].forEach(id=>$(id).onchange=solve);
 document.querySelectorAll('.mode button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.mode button').forEach(x=>x.classList.remove('active'));b.classList.add('active');mode=b.dataset.mode;solve()});
 document.querySelectorAll('.pill').forEach(b=>b.onclick=()=>{document.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));b.classList.add('active');let a=b.dataset.p.split(',');$('pw').value=a[0];$('ph').value=a[1];$('maxh').value=a[2];solve()});
 // The Three.js view installs its own pointer handlers in initThree. These remain only for the SVG fallback.

@@ -1,0 +1,6 @@
+[
+  { "sku": "SUP-A", "adet": 6, "en": 600, "boy": 400, "yukseklik": 250, "agirlik": 18 },
+  { "sku": "SUP-B", "adet": 8, "en": 400, "boy": 300, "yukseklik": 200, "agirlik": 12 },
+  { "sku": "SUP-C", "adet": 10, "en": 300, "boy": 200, "yukseklik": 150, "agirlik": 5 },
+  { "sku": "SUP-D", "adet": 4, "en": 500, "boy": 250, "yukseklik": 300, "agirlik": 8 }
+]
