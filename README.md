@@ -4,6 +4,8 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 
 ## Özellikler
 
+Ana geliştirme ve dağıtım dalı `main`dir. Uygulama statik bir prototiptir; backend, paket kurulumu veya derleme adımı gerektirmez.
+
 - En fazla 30 SKU içeren düzenlenebilir kutu listesi
 - SKU, adet, en, boy, yükseklik ve ağırlık (kg) girişi
 - Pozitif tam sayı doğrulaması
@@ -20,6 +22,10 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 - 3B kutuya tıklayınca SKU, ölçü, ağırlık, yön ve palet konumu bilgisi
 - Doluluk, toplam yük, ağırlık merkezi, destek oranı ve ön stabilite skoru
 - Ağırlık merkezi için `±X`, `±Y`, `±Z` eksen göstergesi
+- GA ilerleme yüzdesi, nesil bilgisi ve iptal düğmesi
+- Aynı palet ve ürün girdileri için en fazla 12 çözümü tarayıcıda (`localStorage`) saklama, karşılaştırma ve en iyi çözümü seçme
+- Robot sırasındaki SKU geçiş sayısı ve SKU küme skoru
+- Tekli/çoklu kutu seçimi ve ok tuşlarıyla 10 mm manuel hareket
 
 ## Hızlı başlangıç
 
@@ -30,6 +36,25 @@ Palet üzerine farklı ölçü, adet ve ağırlıktaki kutuları yerleştirmek i
 3. **3B planı oluştur** düğmesine basın.
 4. 3B sahneyi sürükleyerek döndürün; tekerlekle ağırlık merkezine göre yakınlaştırın/uzaklaştırın.
 5. Sol panel ve 3B alan arasındaki ayıracı sürükleyerek çalışma alanlarını yeniden boyutlandırın.
+6. Genetik modda aramanın ilerlemesini izleyin; gerekirse **İptal** düğmesini kullanın. Kayıtlı çözümler arasında **Önceki**, **Sonraki** ve **En iyi** ile geçiş yapın.
+7. Bir kutuyu tıklayarak seçin; **Shift+tıkla** ile seçime kutu ekleyin veya çıkarın. Ok tuşları seçili kutuları X/Y düzleminde 10 mm taşır. Sınır, çakışma veya %75 destek kuralını ihlal eden hareketler engellenir.
+8. Görüntülenen planı **Çözümü JSON indir** düğmesiyle dışa aktarın. Manuel değişiklikleri saklamak için de bu dışa aktarımı kullanın; çözüm geçmişi tarayıcıya özeldir ve manuel hareketler geçmişe otomatik kaydedilmez.
+
+## Depo yapısı
+
+```text
+dist/
+  index.html              Arayüz, stiller ve temel SVG yerleştirici
+  optimizer.js            Optimizasyon, Three.js görünümü ve etkileşimler
+.github/workflows/
+  deploy.yml              main dalından GitHub Pages dağıtımı
+.openai/hosting.json       Statik hosting yapılandırması
+sample-products.csv        Örnek CSV girdisi
+sample-products.json       Örnek JSON girdisi
+MULTI_SKU_ROADMAP.md        Geliştirme fazları ve hedefleri
+```
+
+`dist` doğrudan düzenlenen ve yayınlanan kaynak dosyaları içerir; otomatik üretilen bir derleme çıktısı değildir. Henüz otomatik test altyapısı yoktur. Değişiklikleri tarayıcıda ürün içe aktarma, analitik/genetik çözüm, kutu seçimi ve hareketi, geçmiş ve JSON dışa aktarma akışlarıyla kontrol edin.
 
 ## Veri dosyası biçimi
 
@@ -69,6 +94,9 @@ Sıradaki önemli aşamalar:
 2. GA'ya temas noktası tercihi ve daha ayrıntılı çok amaçlı Pareto seçimi eklenmesi
 3. Yerel arama ve performans iyileştirmeleri
 4. Robot alma-bırakma pozları, ters kinematik ve çarpışma denetimi
+5. Geometri, optimizasyon ve görünüm kodlarını modüllere ayırma; fiziksel kısıtlar için otomatik testler
+
+Yol haritasındaki GA ilerleme ve iptal özellikleri uygulanmıştır; ayrıntılı faz listesinde bunlar henüz gelecek iş olarak görünebilir.
 
 ## GitHub Pages
 
