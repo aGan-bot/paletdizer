@@ -50,3 +50,15 @@ Dal: `experiment/placement-preference`; algoritma commit'i: `2925e091b925daafb98
 Başlangıç popülasyonundaki deterministik bireyin tercih geni yoktur; bu birey ve henüz tercih mutasyonu almamış genleri eski davranışı korur (tabanda X boyunca, üstte merkeze yakın). Dolayısıyla deney, eski davranışın yanında X/Y alternatifleri sunar. Analitik mod ve tek SKU yolu değişmemiştir. Üst seviyelerdeki yeni X/Y tercihleri merkeze yakınlık önceliğini kaldırabildiğinden ağırlık merkezi sonuçlarını ayrıca karşılaştırmak gerekir.
 
 `node benchmarks/check-preference.cjs` yön seçimi, eski davranışa dönüş, çaprazlama ve mutasyon kontrollerini çalıştırır. Aynı benchmark çalıştırıcısının 33 deney çıktısı `results/preference-2925e09/` altındadır. Sabit değerlendirme sayısı kullanılır; süre bütçesi eşitlenmez. Seed kullanılmadığından referansla birebir eşlenmiş rastgele deney değildir.
+
+## Üst merkezlemeli temas tercihi deneyi
+
+Dal: `experiment/placement-preference-centered`; algoritma commit'i: `a96ad7531a8015b8e07ca76acbd289b1294bfbb3`. Önceki deneye göre tek algoritma değişikliği üst seviyedeki aday önceliğidir: önce merkez uzaklığı küçük olan, eşitse desteği yüksek olan, ikisi de eşitse X/Y geninin tercih ettiği aday seçilir. Tercih geni olmayan bireylerde referans davranışı aynen korunur. Tabandaki X/Y tercihleri değişmez.
+
+Sonuçlar: `results/centered-a96ad75/`. Üç varyantın girdilerini, plan geçerliliğini, analitik eşitliğini ve GA medyanlarını karşılaştırmak için:
+
+```bash
+python3 benchmarks/compare.py benchmarks/results/main-0c50866-complete benchmarks/results/preference-2925e09 benchmarks/results/centered-a96ad75
+```
+
+Bu varyant merkezlemeyi koruyarak GA tercihini ölçer; üst katlarda gen yalnızca merkez uzaklığı ve destek eşitliğinde etkilidir. Aday seçimi referansın bu önceliklerini korusa da tam eşitliklerde genin karar vermesi referansa ek bir davranıştır.
