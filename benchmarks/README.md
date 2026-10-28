@@ -62,3 +62,20 @@ python3 benchmarks/compare.py benchmarks/results/main-0c50866-complete benchmark
 ```
 
 Bu varyant merkezlemeyi koruyarak GA tercihini ölçer; üst katlarda gen yalnızca merkez uzaklığı ve destek eşitliğinde etkilidir. Aday seçimi referansın bu önceliklerini korusa da tam eşitliklerde genin karar vermesi referansa ek bir davranıştır.
+
+## Tüm palet için temas seçimi deneyi
+
+Dal: `experiment/contact-choice`; algoritma commit'i: `84f55aaa03d6b7ba5f35754d3a46770cfa3f5edf`.
+
+Tek GA bütün paleti puanlar (önceki kod da tek global GA kullanıyordu). Yeni olan decoder'ın davranışı ve genlerdir:
+
+- Kutu sırası, kesin 0°/90° yönelim ve `[0,1)` aralığında `contact` geni. OX bunları birlikte taşır; temas geni %5,5 olasılıkla yeniden örneklenir.
+- Adaylar mevcut kutuların pozitif X/Y kenarlarından, tekrar eden koordinatlar ayıklanarak üretilir; Y, ardından X sırasına konur. İlk kutu `(0,0,0)` köşesinde başlar. Negatif yönde temas adayları veya tüm sürekli koordinat uzayı aranmaz.
+- Geçerli aday sayısı `N` ise `floor(contact × N)` indeksli aday seçilir. Aday kümesi önceki kutulara bağlıdır; gen mutlak koordinat saklamaz. Aynı gen zinciri aynı planı üretir.
+- Her seviyede kalan kutuların tamamı sıra ile denenir; yerleşmeyenler tekrar denenir. Bir tam geçişte hiç kutu eklenemezse sıradaki en düşük üst yüzey yüksekliğine geçilir. %150 alan aday havuzu yeni GA yolunda kullanılmaz.
+- Sınır, çakışma ve %75 destek kesin kontrol edilir. Zorunlu merkezleme veya X/Y yerleşim tercihi yoktur.
+- Başlangıç bireylerinin yaklaşık %80'i ağır SKU grupları önce olacak şekilde, geri kalanı karışık grup sırası ile hazırlanır; ayrıca deterministik sıra/temas=0 bireyi vardır. Bu alt katlarda ağır yükü teşvik eder, garanti etmez.
+- Uygunluk puanı, 30 birey ve 30 nesil değişmedi. Kutu adedi, hacim, XY/Z ağırlık merkezi, destek ve SKU akışı tüm plan üzerinde değerlendirilir. Ayrı bir kompaktlık veya maksimum yük yüksekliği cezası bu deneyde eklenmedi; SKU geçişi decoder'ın ürettiği yerleştirme sırasındadır.
+- Analitik decoder ve tek SKU yolu korunmuştur. Yeni GA'nın deterministik başlangıç bireyi de yeni decoder ile değerlendirildiğinden analitik çözümle aynı olmak zorunda değildir.
+
+Kontroller: `node benchmarks/check-contact.cjs`. Sonuçlar: `results/contact-84f55aa/`. Önceki varyantlardan birden fazla mekanizma değiştiği için sonuçlar bir tasarım paketi karşılaştırmasıdır; farkı yalnızca temas genine bağlamayın. Süre farkında koordinat tekrarlarının ayıklanması ve yalnızca genin yöneliminin denenmesi de etkilidir.

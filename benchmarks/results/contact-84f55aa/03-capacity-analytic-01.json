@@ -1,0 +1,446 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-28T17:47:36.076Z",
+  "algorithm": "deterministic",
+  "pattern": null,
+  "coordinateSystem": {
+    "unit": "mm",
+    "origin": "Palet tablasının sol-alt köşesi",
+    "x": "+X palet eni",
+    "y": "+Y palet boyu",
+    "z": "+Z palet tabla üstü",
+    "palletHeightMm": 110
+  },
+  "pallet": {
+    "widthMm": 1200,
+    "depthMm": 800,
+    "maxLoadHeightMm": 1000
+  },
+  "summary": {
+    "requestedBoxes": 68,
+    "placedBoxes": 16,
+    "unplacedBoxes": 52,
+    "utilizationPercent": 64.69,
+    "centerOfMassMm": {
+      "x": -58.33,
+      "y": -106.25,
+      "z": 454.17
+    },
+    "averageSupportPercent": 100,
+    "skuTransitions": 1,
+    "skuClusterScore": 77
+  },
+  "placements": [
+    {
+      "sequence": 1,
+      "sku": "CAP-A",
+      "boxId": 1,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 350,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 175,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 2,
+      "sku": "CAP-A",
+      "boxId": 2,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 350,
+        "depth": 500,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 675,
+        "y": 250,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 3,
+      "sku": "CAP-A",
+      "boxId": 3,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 350,
+        "depth": 500,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 850,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 1025,
+        "y": 250,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 4,
+      "sku": "CAP-A",
+      "boxId": 4,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 350,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 350,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 525,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 5,
+      "sku": "CAP-A",
+      "boxId": 5,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 350,
+        "depth": 500,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 675,
+        "y": 250,
+        "z": 375
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 6,
+      "sku": "CAP-A",
+      "boxId": 6,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 350,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 350,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 525,
+        "z": 375
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 7,
+      "sku": "CAP-A",
+      "boxId": 7,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 350,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 175,
+        "z": 375
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 8,
+      "sku": "CAP-A",
+      "boxId": 8,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 350,
+        "depth": 500,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 850,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 1025,
+        "y": 250,
+        "z": 375
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 9,
+      "sku": "CAP-A",
+      "boxId": 9,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 350,
+        "depth": 500,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 675,
+        "y": 250,
+        "z": 625
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 10,
+      "sku": "CAP-A",
+      "boxId": 10,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 350,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 350,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 525,
+        "z": 625
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 11,
+      "sku": "CAP-A",
+      "boxId": 11,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 350,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 175,
+        "z": 625
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 12,
+      "sku": "CAP-A",
+      "boxId": 12,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 20,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 350,
+        "depth": 500,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 850,
+        "y": 0,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 1025,
+        "y": 250,
+        "z": 625
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 13,
+      "sku": "CAP-B",
+      "boxId": 13,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 500,
+        "y": 0,
+        "z": 750
+      },
+      "centerMm": {
+        "x": 650,
+        "y": 200,
+        "z": 850
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 14,
+      "sku": "CAP-B",
+      "boxId": 14,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 800,
+        "y": 0,
+        "z": 750
+      },
+      "centerMm": {
+        "x": 950,
+        "y": 200,
+        "z": 850
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 15,
+      "sku": "CAP-B",
+      "boxId": 15,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 350,
+        "z": 750
+      },
+      "centerMm": {
+        "x": 200,
+        "y": 500,
+        "z": 850
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 16,
+      "sku": "CAP-B",
+      "boxId": 16,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 750
+      },
+      "centerMm": {
+        "x": 200,
+        "y": 150,
+        "z": 850
+      },
+      "supportRatio": 1
+    }
+  ],
+  "benchmark": {
+    "revision": "84f55aaa03d6b7ba5f35754d3a46770cfa3f5edf",
+    "scenario": "03-capacity",
+    "mode": "analytic",
+    "run": 1,
+    "durationSeconds": 0.004979628000000957,
+    "validation": {
+      "valid": true,
+      "errors": []
+    }
+  }
+}

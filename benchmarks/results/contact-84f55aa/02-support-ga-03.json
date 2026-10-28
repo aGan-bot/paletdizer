@@ -1,0 +1,746 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-10-28T17:47:30.979Z",
+  "algorithm": "GA",
+  "pattern": null,
+  "coordinateSystem": {
+    "unit": "mm",
+    "origin": "Palet tablasının sol-alt köşesi",
+    "x": "+X palet eni",
+    "y": "+Y palet boyu",
+    "z": "+Z palet tabla üstü",
+    "palletHeightMm": 110
+  },
+  "pallet": {
+    "widthMm": 1200,
+    "depthMm": 800,
+    "maxLoadHeightMm": 1000
+  },
+  "summary": {
+    "requestedBoxes": 28,
+    "placedBoxes": 28,
+    "unplacedBoxes": 0,
+    "utilizationPercent": 82.5,
+    "centerOfMassMm": {
+      "x": -1.92,
+      "y": -11.01,
+      "z": 426.4
+    },
+    "averageSupportPercent": 99.29,
+    "skuTransitions": 5,
+    "skuClusterScore": 79
+  },
+  "placements": [
+    {
+      "sequence": 1,
+      "sku": "SUP-A",
+      "boxId": 1,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 18,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 600,
+        "depth": 400,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 300,
+        "y": 200,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 2,
+      "sku": "SUP-A",
+      "boxId": 2,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 18,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 600,
+        "depth": 400,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 0,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 900,
+        "y": 200,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 3,
+      "sku": "SUP-A",
+      "boxId": 3,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 18,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 600,
+        "depth": 400,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 400,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 900,
+        "y": 600,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 4,
+      "sku": "SUP-A",
+      "boxId": 4,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 18,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 600,
+        "depth": 400,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 400,
+        "z": 0
+      },
+      "centerMm": {
+        "x": 300,
+        "y": 600,
+        "z": 125
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 5,
+      "sku": "SUP-A",
+      "boxId": 5,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 18,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 600,
+        "depth": 400,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 400,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 300,
+        "y": 600,
+        "z": 375
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 6,
+      "sku": "SUP-A",
+      "boxId": 6,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 18,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 600,
+        "height": 250
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 800,
+        "y": 300,
+        "z": 375
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 7,
+      "sku": "SUP-B",
+      "boxId": 7,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 200,
+        "z": 350
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 8,
+      "sku": "SUP-B",
+      "boxId": 8,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 450,
+        "y": 200,
+        "z": 350
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 9,
+      "sku": "SUP-C",
+      "boxId": 16,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 600,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 750,
+        "y": 700,
+        "z": 325
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 10,
+      "sku": "SUP-C",
+      "boxId": 15,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 900,
+        "y": 600,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 1050,
+        "y": 700,
+        "z": 325
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 11,
+      "sku": "SUP-C",
+      "boxId": 19,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 1000,
+        "y": 0,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 1100,
+        "y": 150,
+        "z": 325
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 12,
+      "sku": "SUP-C",
+      "boxId": 22,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 1000,
+        "y": 300,
+        "z": 250
+      },
+      "centerMm": {
+        "x": 1100,
+        "y": 450,
+        "z": 325
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 13,
+      "sku": "SUP-C",
+      "boxId": 17,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 600,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 750,
+        "y": 700,
+        "z": 475
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 14,
+      "sku": "SUP-C",
+      "boxId": 20,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 900,
+        "y": 600,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 1050,
+        "y": 700,
+        "z": 475
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 15,
+      "sku": "SUP-C",
+      "boxId": 18,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 1000,
+        "y": 300,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 1100,
+        "y": 450,
+        "z": 475
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 16,
+      "sku": "SUP-C",
+      "boxId": 23,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 1000,
+        "y": 0,
+        "z": 400
+      },
+      "centerMm": {
+        "x": 1100,
+        "y": 150,
+        "z": 475
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 17,
+      "sku": "SUP-B",
+      "boxId": 10,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 450
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 200,
+        "z": 550
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 18,
+      "sku": "SUP-B",
+      "boxId": 12,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 0,
+        "z": 450
+      },
+      "centerMm": {
+        "x": 450,
+        "y": 200,
+        "z": 550
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 19,
+      "sku": "SUP-B",
+      "boxId": 11,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 300,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 800,
+        "y": 450,
+        "z": 600
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 20,
+      "sku": "SUP-B",
+      "boxId": 13,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 400,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 150,
+        "y": 600,
+        "z": 600
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 21,
+      "sku": "SUP-B",
+      "boxId": 14,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 400,
+        "depth": 300,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 0,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 800,
+        "y": 150,
+        "z": 600
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 22,
+      "sku": "SUP-B",
+      "boxId": 9,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 12,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 400,
+        "height": 200
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 400,
+        "z": 500
+      },
+      "centerMm": {
+        "x": 450,
+        "y": 600,
+        "z": 600
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 23,
+      "sku": "SUP-C",
+      "boxId": 21,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 300,
+        "depth": 200,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 600,
+        "z": 550
+      },
+      "centerMm": {
+        "x": 750,
+        "y": 700,
+        "z": 625
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 24,
+      "sku": "SUP-C",
+      "boxId": 24,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 5,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 200,
+        "depth": 300,
+        "height": 150
+      },
+      "positionMm": {
+        "x": 1000,
+        "y": 0,
+        "z": 550
+      },
+      "centerMm": {
+        "x": 1100,
+        "y": 150,
+        "z": 625
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 25,
+      "sku": "SUP-D",
+      "boxId": 25,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 8,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 250,
+        "height": 300
+      },
+      "positionMm": {
+        "x": 0,
+        "y": 0,
+        "z": 650
+      },
+      "centerMm": {
+        "x": 250,
+        "y": 125,
+        "z": 800
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 26,
+      "sku": "SUP-D",
+      "boxId": 26,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 8,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 250,
+        "depth": 500,
+        "height": 300
+      },
+      "positionMm": {
+        "x": 300,
+        "y": 300,
+        "z": 700
+      },
+      "centerMm": {
+        "x": 425,
+        "y": 550,
+        "z": 850
+      },
+      "supportRatio": 0.8
+    },
+    {
+      "sequence": 27,
+      "sku": "SUP-D",
+      "boxId": 27,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 8,
+      "orientationDeg": 0,
+      "dimensionsMm": {
+        "width": 500,
+        "depth": 250,
+        "height": 300
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 0,
+        "z": 700
+      },
+      "centerMm": {
+        "x": 850,
+        "y": 125,
+        "z": 850
+      },
+      "supportRatio": 1
+    },
+    {
+      "sequence": 28,
+      "sku": "SUP-D",
+      "boxId": 28,
+      "layer": null,
+      "mirroredLayer": false,
+      "massKg": 8,
+      "orientationDeg": 90,
+      "dimensionsMm": {
+        "width": 250,
+        "depth": 500,
+        "height": 300
+      },
+      "positionMm": {
+        "x": 600,
+        "y": 300,
+        "z": 700
+      },
+      "centerMm": {
+        "x": 725,
+        "y": 550,
+        "z": 850
+      },
+      "supportRatio": 1
+    }
+  ],
+  "benchmark": {
+    "revision": "84f55aaa03d6b7ba5f35754d3a46770cfa3f5edf",
+    "scenario": "02-support",
+    "mode": "ga",
+    "run": 3,
+    "durationSeconds": 0.7182760980000003,
+    "validation": {
+      "valid": true,
+      "errors": []
+    }
+  }
+}
