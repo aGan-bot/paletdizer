@@ -17,18 +17,6 @@ vm.runInContext(`
   assert.equal(preferPlacement({...tie,support:.75},y,200,0),false);
   assert.equal(preferPlacement(tie,y,200,undefined),false);
   assert.equal(preferPlacement(x,y,200,undefined),false);
-  const items=[{id:0,sku:'A',w:400,d:300,h:200,mass:5},{id:1,sku:'A',w:400,d:300,h:200,mass:5}];
-  for(let i=0;i<30;i++)assert.ok(makeChromosome(items).genes.every(g=>g.placement===0||g.placement===1));
-  const a=items.map(item=>({item,rot:0,placement:0}));
-  const b=items.map(item=>({item,rot:1,placement:1}));
-  for(let i=0;i<30;i++){
-    const child=orderCrossover(a,b);
-    assert.equal(new Set(child.map(g=>g.item.id)).size,2);
-    assert.ok(child.every(g=>g.placement===g.rot));
-  }
-  Math.random=()=>0;
-  const mutated=breed({genes:a},{genes:a}).genes;
-  assert.ok(mutated.every(g=>g.placement===1));
-  assert.ok(a.every(g=>g.placement===0));
-  console.log('Preference direction, legacy fallback, inheritance, mutation and parent isolation passed.');
+  // This comparator remains for the analytic decoder; current GA genes use check-contact.cjs.
+  console.log('Legacy analytic preference comparator passed.');
 `, context);

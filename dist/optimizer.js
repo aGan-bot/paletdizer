@@ -112,15 +112,52 @@ function decodeChromosome(genes,pw,pd,mh){
 }
 function deterministicGenes(products){return buildInstances(products).sort((a,b)=>b.mass-a.mass||b.h-a.h).map((item,index)=>({item,rot:index%2}))}
 function packProductList(products,pw,pd,mh){return decodeChromosome(deterministicGenes(products),pw,pd,mh)}
+// Multi-SKU GA: strict orientation and a normalized index into valid contact positions.
+// No mandatory center or X/Y preference. The first box starts at the origin.
+function contactCandidates(gene,placed,pw,pd,mh,z){
+  let item=gene.item,rot=gene.rot,w=rot?item.d:item.w,d=rot?item.w:item.d;
+  if(z+item.h>mh)return[];
+  let xs=new Set([0]),ys=new Set([0]);
+  placed.forEach(b=>{xs.add(b.x+b.w);ys.add(b.y+b.d)});
+  let candidates=[];
+  for(let y of [...ys].sort((a,b)=>a-b))for(let x of [...xs].sort((a,b)=>a-b)){
+    if(x+w>pw||y+d>pd)continue;
+    if(placed.some(b=>!(x+w<=b.x||b.x+b.w<=x||y+d<=b.y||b.y+b.d<=y||z+item.h<=b.z||b.z+b.h<=z)))continue;
+    let support=z===0?1:placed.filter(b=>b.z+b.h===z).reduce((n,b)=>n+Math.max(0,Math.min(x+w,b.x+b.w)-Math.max(x,b.x))*Math.max(0,Math.min(y+d,b.y+b.d)-Math.max(y,b.y)),0)/(w*d);
+    if(support>=.75)candidates.push({...item,x,y,z,w,d,rot,support});
+  }
+  return candidates;
+}
+function decodeContactChromosome(genes,pw,pd,mh){
+  let remaining=genes.slice(),placed=[],z=0,seen=new Set();
+  while(remaining.length&&!seen.has(z)){
+    seen.add(z);
+    let progress;
+    do{
+      progress=false;let pending=[];
+      for(let gene of remaining){
+        let candidates=contactCandidates(gene,placed,pw,pd,mh,z);
+        if(!candidates.length){pending.push(gene);continue}
+        let index=placed.length?Math.min(candidates.length-1,Math.floor((gene.contact??0)*candidates.length)):0;
+        placed.push({...candidates[index],sequence:placed.length});progress=true;
+      }
+      remaining=pending;
+    }while(progress&&remaining.length);
+    // Only advance once a complete pass places no remaining box at this level.
+    let next=placed.map(b=>b.z+b.h).filter(h=>h>z&&!seen.has(h)).sort((a,b)=>a-b)[0];
+    if(next===undefined)break;z=next;
+  }
+  return placed;
+}
 function singleSkuMirrorPlan(product,pw,pd,mh,baseLayout){let base=baseLayout;if(!base){let options=[{rot:0,w:product.w,d:product.d},{rot:1,w:product.d,d:product.w}].map(o=>({...o,nx:Math.floor(pw/o.w),ny:Math.floor(pd/o.d)})).filter(o=>o.nx&&o.ny).map(o=>({...o,capacity:o.nx*o.ny})).sort((a,b)=>b.capacity-a.capacity||a.w*a.d-b.w*b.d),best=options[0];if(!best)return[];base=[];for(let y=0;y<best.ny;y++)for(let x=0;x<best.nx;x++)base.push({x:x*best.w,y:y*best.d,w:best.w,d:best.d,rot:best.rot})}let boxes=[],maxLayers=Math.floor(mh/product.h),id=0;for(let layer=0;layer<maxLayers&&id<product.qty;layer++){let mirrored=layer%2===1,positions=mirrored?base.slice().reverse().map(q=>({x:pw-q.x-q.w,y:q.y,w:q.w,d:q.d,rot:q.rot})):base;for(let p of positions){if(id>=product.qty)break;boxes.push({...product,id,x:p.x,y:p.y,z:layer*product.h,w:p.w,d:p.d,rot:p.rot,support:1,layer:layer+1,mirrored,sequence:id});id++}}return boxes}
 async function geneticSingleSkuLayer(product,pw,pd,runId){let length=Math.floor(pw*pd/(product.w*product.d)),population=Array.from({length:52},()=>Array.from({length},()=>Math.random()<.5?0:1)),rank=()=>population.map(genes=>{let boxes=tetrisPack(genes,pw,pd,product.w,product.d),right=Math.max(0,...boxes.map(q=>q.x+q.w)),bottom=Math.max(0,...boxes.map(q=>q.y+q.d));return{genes,boxes,score:boxes.length*1e8-right*bottom}}).sort((a,b)=>b.score-a.score),generations=42;for(let generation=0;generation<generations;generation++){if(gaCancel||runId!==gaRunId)return null;let ranked=rank(),next=ranked.slice(0,6).map(q=>q.genes);while(next.length<population.length){let a=ranked[(Math.random()*12)|0].genes,b=ranked[(Math.random()*12)|0].genes,cut=(Math.random()*length)|0,child=a.slice(0,cut).concat(b.slice(cut));for(let i=0;i<length;i++)if(Math.random()<.035)child[i]^=1;next.push(child)}population=next;showGaProgress(Math.round((generation+1)/generations*100),generation+1);await new Promise(requestAnimationFrame)}return rank()[0]}
 function shuffle(a){let b=a.slice();for(let i=b.length-1;i>0;i--){let j=(Math.random()*(i+1))|0;[b[i],b[j]]=[b[j],b[i]]}return b}
-function makeChromosome(items){let groups={};items.forEach(item=>(groups[item.sku]??=[]).push(item));let blocks=shuffle(Object.values(groups));return{genes:blocks.flatMap(block=>block.slice().sort((a,b)=>b.mass-a.mass||b.h-a.h).map(item=>({item,rot:Math.random()<.5?0:1,placement:Math.random()<.5?0:1})))}}
+function makeChromosome(items){let groups={};items.forEach(item=>(groups[item.sku]??=[]).push(item));let blocks=Object.values(groups);if(Math.random()<.8)blocks.sort((a,b)=>b[0].mass-a[0].mass);else blocks=shuffle(blocks);return{genes:blocks.flatMap(block=>block.slice().sort((a,b)=>b.mass-a.mass||b.h-a.h).map(item=>({item,rot:Math.random()<.5?0:1,contact:Math.random()})))}}
 function orderCrossover(a,b){if(a.length<2)return a.map(g=>({...g}));let start=(Math.random()*a.length)|0,end=start+1+((Math.random()*(a.length-start))|0),taken=new Set(a.slice(start,end).map(g=>g.item.id)),child=Array(a.length);for(let i=start;i<end;i++)child[i]={...a[i]};let rest=b.filter(g=>!taken.has(g.item.id)),r=0;for(let i=0;i<child.length;i++)if(!child[i])child[i]={...rest[r++]};return child}
-function breed(a,b){let genes=orderCrossover(a.genes,b.genes);if(genes.length>1&&Math.random()<.24){let x=(Math.random()*genes.length)|0,y=(Math.random()*genes.length)|0;[genes[x],genes[y]]=[genes[y],genes[x]]}if(genes.length>2&&Math.random()<.30){let sku=genes[(Math.random()*genes.length)|0].item.sku,block=genes.filter(g=>g.item.sku===sku),rest=genes.filter(g=>g.item.sku!==sku),at=(Math.random()*(rest.length+1))|0;genes=rest.slice(0,at).concat(block,rest.slice(at))}genes.forEach(g=>{if(Math.random()<.055)g.rot^=1;if(Math.random()<.055)g.placement=(g.placement??0)^1});return{genes}}
-function evaluateChromosome(chromosome,pw,pd,mh){let boxes=decodeChromosome(chromosome.genes,pw,pd,mh),load=analyzeLoad({boxes3d:boxes,pw,pd,mh})||{offset:Infinity,z:Infinity,support:0},flow=analyzeSkuFlow(boxes,pw,pd),volume=boxes.reduce((n,q)=>n+q.w*q.d*q.h,0),utilization=volume/(pw*pd*mh);return{chromosome,boxes,flow,score:boxes.length*1e9+utilization*1e7-load.offset*3000-load.z*700-(1-load.support)*1e7-flow.transitions*200-flow.spread*20}}
+function breed(a,b){let genes=orderCrossover(a.genes,b.genes);if(genes.length>1&&Math.random()<.24){let x=(Math.random()*genes.length)|0,y=(Math.random()*genes.length)|0;[genes[x],genes[y]]=[genes[y],genes[x]]}if(genes.length>2&&Math.random()<.30){let sku=genes[(Math.random()*genes.length)|0].item.sku,block=genes.filter(g=>g.item.sku===sku),rest=genes.filter(g=>g.item.sku!==sku),at=(Math.random()*(rest.length+1))|0;genes=rest.slice(0,at).concat(block,rest.slice(at))}genes.forEach(g=>{if(Math.random()<.055)g.rot^=1;if(Math.random()<.055)g.contact=Math.random()});return{genes}}
+function evaluateChromosome(chromosome,pw,pd,mh){let boxes=decodeContactChromosome(chromosome.genes,pw,pd,mh),load=analyzeLoad({boxes3d:boxes,pw,pd,mh})||{offset:Infinity,z:Infinity,support:0},flow=analyzeSkuFlow(boxes,pw,pd),volume=boxes.reduce((n,q)=>n+q.w*q.d*q.h,0),utilization=volume/(pw*pd*mh);return{chromosome,boxes,flow,score:boxes.length*1e9+utilization*1e7-load.offset*3000-load.z*700-(1-load.support)*1e7-flow.transitions*200-flow.spread*20}}
 async function geneticMultiSku(products,pw,pd,mh,runId){
-  let items=buildInstances(products),population=[{genes:deterministicGenes(products)},...Array.from({length:29},()=>makeChromosome(items))],generations=30,rank=()=>population.map(c=>evaluateChromosome(c,pw,pd,mh)).sort((a,b)=>b.score-a.score);
+  let items=buildInstances(products),population=[{genes:deterministicGenes(products).map(g=>({...g,contact:0}))},...Array.from({length:29},()=>makeChromosome(items))],generations=30,rank=()=>population.map(c=>evaluateChromosome(c,pw,pd,mh)).sort((a,b)=>b.score-a.score);
   for(let generation=0;generation<generations;generation++){
     if(gaCancel||runId!==gaRunId)return null;
     let ranked=rank(),next=ranked.slice(0,4).map(x=>x.chromosome);while(next.length<population.length){let a=ranked[(Math.random()*10)|0].chromosome,b=ranked[(Math.random()*10)|0].chromosome;next.push(breed(a,b))}population=next;showGaProgress(Math.round((generation+1)/generations*100),generation+1);await new Promise(requestAnimationFrame);
